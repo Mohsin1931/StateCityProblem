@@ -25,6 +25,9 @@ class dummyController extends Controller
         $citiesArray = array(
             'Alexander City', 'Andalusia' ,'Anniston','Baker' ,'Bakersfield' ,'Balboa Island' ,'Calabasas','Kansas City','Lawrence','Olathe','Overland Park','Topeka','Overland Park','Topeka','Wichita','Manhattan',
         );
+        $citiesArray2 = array(
+            'Alexander City', 'Andalusia' ,'Anniston','Baker' ,'Bakersfield' ,'Balboa Island' ,'Calabasas','Kansas City','Lawrence','Olathe','Overland Park','Topeka','Overland Park','Topeka','Wichita','Manhattan',
+        );
         if(!empty($rec_state)){
             $citiesInStates = $citiesStatesArray[$rec_state];
             return $citiesInStates;
