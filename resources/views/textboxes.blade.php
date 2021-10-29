@@ -46,14 +46,8 @@
             settings.data = {country: query , city : getCityVal()};  
             return settings;        
         },
-        // transform: function(data){
-        //   //console.log(data);
-        //     autoCity(data);
-        //     return data;
-        // }
-     
-
       
+    
     }
   });
 
@@ -102,6 +96,7 @@
 
     });
 
+    //click event on selecting country
     $(".tt-dataset-countries").click(function(){
       setTimeout(function() {
         
@@ -112,7 +107,7 @@
         data :{'country' : getCountryVal()},
         url : 'dummy/city',
         success: function(data){
-          console.log("Asdsad");
+          
           autoCity(data);
         },
       });
@@ -144,8 +139,8 @@
     //auto select for country
 
     $(".tt-dataset-cities").click(function(){
-      console.log("////////////");
-      console.log(getCityVal());
+     
+     
       setTimeout(function() {
         
       
