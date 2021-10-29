@@ -18,9 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('form');
+    return view('textboxes');
 });
 
 
-Route::get('/dummy/beginsWith', [dummyController::class, 'beginsWith']);
-Route::get('/dummy/stateBeginsWith', [dummyController::class, 'stateBeginsWith']);
+// Route::get('/dummy/citybeginsWith', [dummyController::class, 'citybeginsWith']);
+// Route::get('/dummy/stateBeginsWith', [dummyController::class, 'stateBeginsWith']);
+
+Route::get('/dummy/countrySearch', [dummyController::class, 'countrySearch']);
+Route::get('/dummy/citySearch', [dummyController::class, 'citySearch']);
+Route::get('/dummy/city', [dummyController::class, 'city']);
+Route::get('/dummy/country', [dummyController::class, 'country']);
+
