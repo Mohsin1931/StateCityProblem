@@ -6,6 +6,6 @@ Typeahead (https://github.com/corejavascript/typeahead.js/).
 
 Instructions:
 
-Database used : sqlite (file : 'database/database.sqlite')
-Change the Database path in .env file to current local path of database.sqlite file
+Database used : sqlite (file : 'database/database.db')
+Change the Database path in .env file to current local path of database.db file
 DB_DATABASE = "Current absolute path of file".
