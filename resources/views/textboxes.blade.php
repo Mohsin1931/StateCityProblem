@@ -7,6 +7,12 @@
         {
           margin-top: 100px;
         }
+        .ScrollStyle
+{
+    max-height: 150px;
+    width: 200px;
+    overflow-y: scroll;
+}
     </style>
   </head>
 
@@ -60,7 +66,7 @@
     
       name: 'countries',
       display:'country',
-     
+      limit : 50,
       source: country
     });
 
@@ -89,13 +95,15 @@
       
 
       name: 'cities',
-    // hint: true,
+      limit : 50,
       display : 'city',
       source: cities,
       
 
     });
 
+
+    $('.tt-menu').addClass('ScrollStyle');
     //click event on selecting country
     $(".tt-dataset-countries").click(function(){
       setTimeout(function() {
@@ -127,9 +135,9 @@
        
         
         $('.tt-dataset-cities').append('<div class="tt-suggestion tt-selectable">'+city+'</div>');
-        if(i==5){
-          break;
-        }
+        // if(i==5){
+        //   break;
+        // }
       }
    
       $('#city').focus();
@@ -169,9 +177,9 @@
         
         
         $('.tt-dataset-countries').append('<div class="tt-suggestion tt-selectable">'+country+'</div>');
-        if(i == 5){
-          break;
-        }
+        // if(i == 5){
+        //   break;
+        // }
       }
    
       $('#country').focus();
