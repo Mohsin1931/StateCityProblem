@@ -1,5 +1,5 @@
 This code works in a way that two of the textboxes can relate with eachother like country and city example in this project
-whenever user select a state he will get suggestions about cities in that countries only and likewise.
+whenever user select a country he will get suggestions about cities in that countries only and likewise.
 
 Libraries Used:
 Typeahead (https://github.com/corejavascript/typeahead.js/).
