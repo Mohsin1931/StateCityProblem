@@ -40,6 +40,7 @@
   function getCountryVal(){
     return $("#country").val();
   }
+
   //bloodhound instance for country textbox
   var country = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.whitespace,
@@ -66,7 +67,7 @@
     
       name: 'countries',
       display:'country',
-      limit : 50,
+    
       source: country
     });
 
@@ -95,34 +96,52 @@
       
 
       name: 'cities',
-      limit : 50,
+     
       display : 'city',
       source: cities,
       
 
     });
-
-
+  
+    //adding scroll bar to menu
     $('.tt-menu').addClass('ScrollStyle');
-    //click event on selecting country
-    $(".tt-dataset-countries").click(function(){
+    
+    function countryListener(){
       setTimeout(function() {
         
      
-      if(getCityVal() == ""){
-        $.ajax({
-        type : "GET",
-        data :{'country' : getCountryVal()},
-        url : 'dummy/city',
-        success: function(data){
-          
-          autoCity(data);
-        },
-      });
-      }
-    }, 300);
+        if(getCityVal() == ""){
+          $.ajax({
+          type : "GET",
+          data :{'country' : getCountryVal()},
+          url : 'dummy/city',
+          success: function(data){
+            
+            autoCity(data);
+          },
+        });
+        }
+      }, 500);
+    }
     
+    //click event on selecting country
+
+     $(".tt-dataset-countries").click(function(){
+        countryListener();
+     
+       
     });
+
+    $("#country").keyup(function (event){
+      
+      if(event.keyCode == 13){
+        countryListener();
+      }
+    });
+    
+  
+
+  
 
     //for auto citytext box
     function autoCity(data){
@@ -134,38 +153,48 @@
         city =  data[i]['city'];
        
         
-        $('.tt-dataset-cities').append('<div class="tt-suggestion tt-selectable">'+city+'</div>');
-        // if(i==5){
-        //   break;
-        // }
+        $('.tt-dataset-cities').append('<div class="tt-suggestion tt-selectable" >'+city+'</div>');
+    
       }
-   
+      //$('.tt-menu').removeClass("tt-empty");
       $('#city').focus();
     }
-
-    
-    //auto select for country
-
-    $(".tt-dataset-cities").click(function(){
-     
-     
+  
+    function cityListener(){
       setTimeout(function() {
         
       
-      if(getCountryVal() == ""){
-        $.ajax({
-        type : "GET",
-        data :{'city' : getCityVal()},
-        url : 'dummy/country',
-        success: function(data){
-          
-          autoCountry(data);
-        },
-      })
-      }
-    }, 300);
+        if(getCountryVal() == ""){
+          $.ajax({
+          type : "GET",
+          data :{'city' : getCityVal()},
+          url : 'dummy/country',
+          success: function(data){
+            
+            autoCountry(data);
+          },
+        })
+        }
+      }, 500);
+    }
+    
+    //auto select for city click
+
+    $(".tt-dataset-cities").click(function(){
+     
+      countryListener();
+     
     
     })
+
+    //auto select for city enter
+    $("#city").keyup(function (event){
+      
+      if(event.keyCode == 13){
+        cityListener();
+      }
+    });
+
 
     //for auto countrytext box
     function autoCountry(data){
@@ -177,9 +206,6 @@
         
         
         $('.tt-dataset-countries').append('<div class="tt-suggestion tt-selectable">'+country+'</div>');
-        // if(i == 5){
-        //   break;
-        // }
       }
    
       $('#country').focus();
